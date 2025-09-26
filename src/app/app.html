@@ -1,0 +1,14 @@
+<!--code is replaced with new user interface, starting twith a header and main body-->
+<header class="app-header">
+  <div class="brand">Library Archive</div>
+  <nav class="nav">
+    <!--routerLinkActiveOptions is used to configure the active link-->
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/genres" routerLinkActive="active">Genres</a>
+  </nav>
+</header>
+
+<main class="main">
+  <!--router-outlet is a placeholder that Angular dynamically fills based on the current router state-->
+  <router-outlet></router-outlet>
+</main>

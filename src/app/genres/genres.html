@@ -1,0 +1,23 @@
+<section class="genres-page">
+  <h2>Book Genres</h2>
+
+  <!-- Add genre form -->
+   <!--We are calling the addGenreFrom method on form submission, this is in genres.ts-->
+   <!--$event.preventDefault(); prevents the default form submission behavior-->
+  <form (submit)="addGenreFrom(nameInput, descInput); $event.preventDefault();" class="add-form">
+       <!--We are using template reference variables (#nameInput, #descInput) to get the input values-->
+    <input #nameInput placeholder="Genre name" />
+    <input #descInput placeholder="Short description (optional)" />
+    <button type="submit">Add Genre</button>
+  </form>
+<!-- Genre cards grid -->
+  <div class="grid" role="list">
+    <!-- We are using the @for directive of Angular to loop through the genres -->
+    @for (genre of genres(); track genre.name) {
+      <!-- Each genre is displayed using the genre card component -->
+      <!-- We are passing the genre object as an Input to the genre card component -->
+      <app-genre-card [genre]="genre"></app-genre-card>
+    }
+  </div>
+</section>
+

@@ -1,0 +1,15 @@
+:root {
+  --accent: #2f7ab8;
+  --bg: #fafafa;
+  --card-bg: #fff;
+  --muted: #666;
+}
+* { box-sizing: border-box; }
+body, html { margin:0; font-family:system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); }
+.app-header { display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem; background:linear-gradient(90deg,#123,#234); color:#fff; }
+.brand { font-weight:700; }
+.nav a { color:#fff; text-decoration:none; margin-left:1rem; padding:0.25rem 0.5rem; border-radius:4px; }
+.nav a.active { background:rgba(255,255,255,0.08); text-decoration:underline; }
+.main { padding:2rem 1rem; min-height:calc(100vh - 68px); }
+.splash { max-width:820px; margin:3rem auto; text-align:center; }
+.lead { color:#444; }
