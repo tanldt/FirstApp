@@ -44,6 +44,21 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
+## Connecting Firebase
+
+The email capture form posts sign-ups to a Firebase Realtime Database. Update
+`src/app/firebase.config.ts` with your project's database URL before running
+the landing page in production:
+
+```ts
+export const firebaseConfig = {
+  databaseUrl: 'https://your-project-id-default-rtdb.firebaseio.com'
+};
+```
+
+The service will write subscriber records to the `/subscribers` collection of
+the configured database.
+
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
