@@ -1,14 +1,94 @@
-<!--code is replaced with new user interface, starting twith a header and main body-->
-<header class="app-header">
-  <div class="brand">Library Archive</div>
-  <nav class="nav">
-    <!--routerLinkActiveOptions is used to configure the active link-->
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a routerLink="/genres" routerLinkActive="active">Genres</a>
-  </nav>
-</header>
+<div class="page">
+  <header class="hero">
+    <div class="hero__badge">New Drop</div>
+    <h1 class="hero__title">Discover the next wave of creative storytelling.</h1>
+    <p class="hero__subtitle">
+      Lumina Library curates bold, diverse voices with cinematic playlists of stories, essays,
+      and poems delivered to your inbox every week.
+    </p>
+    <form class="signup" [formGroup]="landingForm" (ngSubmit)="submit()" novalidate>
+      <div class="signup__input">
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          aria-label="Email address"
+          [attr.aria-invalid]="emailControl().invalid && emailControl().touched"
+          [disabled]="isSubmitting()"
+        />
+        <button type="submit" [disabled]="isSubmitting()">
+          <span *ngIf="!isSubmitting(); else loading">Get early access</span>
+        </button>
+        <ng-template #loading>
+          <span class="loading">Saving...</span>
+        </ng-template>
+      </div>
+      <p class="signup__hint" *ngIf="emailControl().invalid && emailControl().touched">
+        Please enter a valid email address.
+      </p>
+      <p class="signup__hint signup__hint--success" *ngIf="isSuccess()">
+        You&apos;re on the list! Watch your inbox for luminous reads.
+      </p>
+      <p class="signup__hint signup__hint--error" *ngIf="errorMessage() as message">
+        {{ message }}
+      </p>
+    </form>
+    <div class="hero__stats">
+      <div>
+        <h2>60k+</h2>
+        <p>Readers discovering new writers monthly.</p>
+      </div>
+      <div>
+        <h2>850+</h2>
+        <p>Stories, essays, and interviews in our vault.</p>
+      </div>
+      <div>
+        <h2>4.9★</h2>
+        <p>Average reader rating for the curated experience.</p>
+      </div>
+    </div>
+  </header>
 
-<main class="main">
-  <!--router-outlet is a placeholder that Angular dynamically fills based on the current router state-->
-  <router-outlet></router-outlet>
-</main>
+  <main>
+    <section class="highlights">
+      <article>
+        <h3>Editorial drops</h3>
+        <p>
+          Weekly thematic collections crafted by editors and guest curators, blending audio,
+          visuals, and written storytelling.
+        </p>
+      </article>
+      <article>
+        <h3>Community rooms</h3>
+        <p>
+          Join live salons, Q&amp;As, and micro-workshops with the creators you love and the ones you
+          haven&apos;t met yet.
+        </p>
+      </article>
+      <article>
+        <h3>Immersive playlists</h3>
+        <p>
+          Soundscapes, transcripts, and behind-the-scenes annotations to deepen every reading
+          session.
+        </p>
+      </article>
+    </section>
+
+    <section class="preview">
+      <div class="preview__card">
+        <h4>What&apos;s streaming next</h4>
+        <p>
+          “Electric Dusk” is an upcoming anthology featuring Afrofuturist poets scored by
+          experimental jazz collectives.
+        </p>
+      </div>
+      <div class="preview__card">
+        <h4>Member spotlight</h4>
+        <p>
+          Meet Sloane, a filmmaker who found their writing collaborator through Lumina&apos;s community
+          studio.
+        </p>
+      </div>
+    </section>
+  </main>
+</div>
